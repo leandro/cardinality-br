@@ -10,7 +10,7 @@ This gem has the simple purpose of expressing a number or currency in its cardin
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cardinality-br'
+gem 'cardinality-br', require: 'brazilian_cardinality'
 ```
 
 And then execute:
