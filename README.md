@@ -1,6 +1,7 @@
 # BrazilianCardinal
 
 [![Build Status](https://travis-ci.org/leandro/cardinality-br.svg?branch=master)](https://travis-ci.org/leandro/cardinality-br)
+[![Code Climate](https://codeclimate.com/github/leandro/cardinality-br.svg)](https://codeclimate.com/github/leandro/cardinality-br)
 
 This gem has the simple purpose of expressing a number or currency in its cardinal form in the brazilian language.
 
