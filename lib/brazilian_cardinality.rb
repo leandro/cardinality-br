@@ -1,0 +1,1 @@
+require 'brazilian_cardinality/brazilian_cardinality'
