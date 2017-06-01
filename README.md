@@ -1,4 +1,4 @@
-# BrazilianCardinal
+# BrazilianCardinality
 
 [![Build Status](https://travis-ci.org/leandro/cardinality-br.svg?branch=master)](https://travis-ci.org/leandro/cardinality-br)
 [![Code Climate](https://codeclimate.com/github/leandro/cardinality-br.svg)](https://codeclimate.com/github/leandro/cardinality-br)
