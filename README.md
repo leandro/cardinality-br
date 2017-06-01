@@ -1,8 +1,6 @@
-# Cardinality::Br
+# BrazilianCardinal
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cardinality/br`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem is for expressing a number or currency in its cardinal form in the brazilian language.
 
 ## Installation
 
@@ -22,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'brazilian_cardinality'
+BrazilianCardinality::Number.number_cardinal(78) # returns 'setenta e oito'
+BrazilianCardinality::Currency.currency_cardinal(43.76) # returns 'quarenta e três reais e setenta e seis centavos'
+```
 
 ## Development
 
@@ -38,4 +40,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
