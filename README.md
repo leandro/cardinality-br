@@ -1,6 +1,6 @@
 # BrazilianCardinal
 
-This gem is for expressing a number or currency in its cardinal form in the brazilian language.
+This gem has the simple purpose of expressing a number or currency in its cardinal form in the brazilian language.
 
 ## Installation
 
