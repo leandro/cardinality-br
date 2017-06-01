@@ -22,7 +22,11 @@ Or install it yourself as:
 
 ```ruby
 require 'brazilian_cardinality'
+
+# cardinality example for ordinary numbers
 BrazilianCardinality::Number.number_cardinal(78) # returns 'setenta e oito'
+
+# cardinality for currency value
 BrazilianCardinality::Currency.currency_cardinal(43.76) # returns 'quarenta e três reais e setenta e seis centavos'
 ```
 
