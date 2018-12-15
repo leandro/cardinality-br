@@ -5,7 +5,7 @@ module BrazilianCardinality
         return 'grátis' if value.zero?
 
         abs_value = value.abs
-        cents = abs_value.to_s.split('.')[1].to_s[0, 2].to_i
+        cents = abs_value.to_s.split('.')[1].to_s[0, 2].ljust(2, '0').to_i
         integer = abs_value.to_i
         expression = raw_cardinal_expression(integer, cents)
 
