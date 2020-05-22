@@ -51,18 +51,40 @@ module BrazilianCardinality
     class << self
       def number_cardinal(number)
         negative = number.negative? ? 'menos ' : ''
-        n = number.to_i.abs
-
-        expression = case n
-                     when 0..999 then cardinal_for_0_up_to_999(n)
-                     when 1000..999_999_999_999_999 then cardinal_for_thousands_to_trillions(n)
-                     else raise NumberTooBigError, "#{n} is too big"
-                     end
+        abs_value = number.abs
+        decimals = abs_value.to_s.split('.')[1].to_s[0, 2]
+        integer = abs_value.to_i
+        expression = raw_cardinal_expression(integer, decimals)
 
         "#{negative}#{expression}"
       end
 
       private
+
+      def raw_cardinal_expression(integer, decimals)
+        integer_expression = cardinal_number_integer_part(integer)
+        cents_expression = cardinal_decimals(decimals)
+        [integer_expression, cents_expression].compact.join(' vírgula ')
+      end
+
+      def cardinal_number_integer_part(value)
+        case value
+        when 0..999 then cardinal_for_0_up_to_999(value)
+        when 1000..999_999_999_999_999 then cardinal_for_thousands_to_trillions(value)
+        else raise NumberTooBigError, "#{value} is too big"
+        end
+      end
+
+      def cardinal_decimals(decimals)
+        return if decimals.to_i.zero?
+
+        if decimals[0].to_i.zero?
+          decimal_prefix = 'zero'
+        end
+
+        decimals = decimals.to_i
+        [decimal_prefix, Number.number_cardinal(decimals)].compact.join(' ')
+      end
 
       def cardinal_for_0_up_to_999(number)
         case number
@@ -101,6 +123,20 @@ module BrazilianCardinality
         high_order_units = "#{number_cardinal(quocient)} #{word}"
         return high_order_units if remainder.zero?
         "#{high_order_units} e #{number_cardinal(remainder)}"
+      end
+
+      def cardinal_for_fraction(fraction)
+        return '' unless fraction
+
+        fraction = (fraction * 10).to_i
+
+        fraction_expression = case fraction
+                              when 0..999 then cardinal_for_0_up_to_999(fraction)
+                              when 1000..999_999_999_999_999 then cardinal_for_thousands_to_trillions(fraction)
+                              else raise NumberTooBigError, "#{fraction} is too big"
+                              end
+
+        ' vírgula ' + fraction_expression
       end
     end
   end

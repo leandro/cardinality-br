@@ -309,4 +309,20 @@ class BrazilianCardinality::NumberTest < Minitest::Test
   def test_when_number_has_a_scale_bigger_than_trillion
     assert_raises(BrazilianCardinality::Number::NumberTooBigError) { @klass.number_cardinal(1_000_000_000_000_000) }
   end
+
+  def test_number_with_decimals
+    assert_equal 'zero vírgula zero um', @klass.number_cardinal(0.01)
+    assert_equal 'zero vírgula cinco', @klass.number_cardinal(0.5)
+    assert_equal 'zero vírgula um', @klass.number_cardinal(0.10)
+    assert_equal 'zero vírgula onze', @klass.number_cardinal(0.11)
+    assert_equal 'zero vírgula vinte e três', @klass.number_cardinal(0.23)
+    assert_equal 'zero vírgula cinquenta e dois', @klass.number_cardinal(0.52)
+    assert_equal 'um vírgula zero um', @klass.number_cardinal(1.01)
+    assert_equal 'um', @klass.number_cardinal(1.00)
+    assert_equal 'um vírgula cinco', @klass.number_cardinal(1.5)
+    assert_equal 'um vírgula um', @klass.number_cardinal(1.10)
+    assert_equal 'um vírgula onze', @klass.number_cardinal(1.11)
+    assert_equal 'um vírgula vinte e três', @klass.number_cardinal(1.23)
+    assert_equal 'um vírgula cinquenta e dois', @klass.number_cardinal(1.52)
+  end
 end
